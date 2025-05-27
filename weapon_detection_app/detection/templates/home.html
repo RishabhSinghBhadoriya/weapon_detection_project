@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <!-- Hero Section with rounded corners -->
+    <div class="hero-section bg-dark text-white py-5 rounded-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold">Weapon Detection System</h1>
+                    <p class="lead mb-4">Advanced AI-powered detection for enhanced security and safety</p>
+                    <div class="d-flex gap-3">
+                        <a href="{% url 'live_detection' %}" class="btn btn-primary btn-lg rounded-pill">Try Live Detection</a>
+                        <a href="{% url 'image_upload' %}" class="btn btn-outline-light btn-lg rounded-pill">Upload Image</a>
+                        <a href="{% url 'upload_history' %}" class="btn btn-info btn-lg">Detection History</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Placeholder for your illustration -->
+                    <div class="text-center">
+                        <img src="{% static 'images/hero-illustration.png' %}" alt="Weapon Detection Illustration" class="img-fluid rounded-4 shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section with rounded cards -->
+    <div class="features-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Key Features</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4">
+                        <div class="card-body text-center">
+                            <div class="feature-icon bg-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                                <i class="fas fa-video fa-2x"></i>
+                            </div>
+                            <h3 class="card-title h5">Real-time Detection</h3>
+                            <p class="card-text">Instantly detect weapons in live video streams with advanced AI algorithms</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4">
+                        <div class="card-body text-center">
+                            <div class="feature-icon bg-success text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                                <i class="fas fa-image fa-2x"></i>
+                            </div>
+                            <h3 class="card-title h5">Image Analysis</h3>
+                            <p class="card-text">Upload and analyze images to detect concealed or visible weapons</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm border-0 rounded-4">
+                        <div class="card-body text-center">
+                            <div class="feature-icon bg-info text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
+                                <i class="fas fa-history fa-2x"></i>
+                            </div>
+                            <h3 class="card-title h5">Detection History</h3>
+                            <p class="card-text">Comprehensive history of all detections for review and analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section with rounded elements -->
+    <div class="how-it-works-section py-5 bg-light rounded-3 my-4">
+        <div class="container">
+            <h2 class="text-center mb-5">How Detection Works</h2>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Placeholder for your full-screen explanation image -->
+                    <div class="detection-steps-image">
+                        <img src="{% static 'images/detection-steps.png' %}" alt="Detection Process Steps" class="img-fluid rounded-4 shadow">
+                    </div>
+                    
+                    <!-- Alternatively, you can use a step process visualization -->
+                    <div class="detection-steps mt-5">
+                        <div class="row g-4">
+                            <div class="col-md-3">
+                                <div class="card h-100 border-0 shadow-sm rounded-4">
+                                    <div class="card-body text-center">
+                                        <div class="step-number bg-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                            <span>1</span>
+                                        </div>
+                                        <h4 class="card-title h5">Image Capture</h4>
+                                        <p class="card-text">System captures frames from video feed or uploads</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card h-100 border-0 shadow-sm rounded-4">
+                                    <div class="card-body text-center">
+                                        <div class="step-number bg-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                            <span>2</span>
+                                        </div>
+                                        <h4 class="card-title h5">Pre-processing</h4>
+                                        <p class="card-text">Frame normalization and preparation for AI analysis</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card h-100 border-0 shadow-sm rounded-4">
+                                    <div class="card-body text-center">
+                                        <div class="step-number bg-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                            <span>3</span>
+                                        </div>
+                                        <h4 class="card-title h5">AI Detection</h4>
+                                        <p class="card-text">Neural networks identify potential weapon presence</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card h-100 border-0 shadow-sm rounded-4">
+                                    <div class="card-body text-center">
+                                        <div class="step-number bg-primary text-white rounded-circle mb-3 mx-auto d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                            <span>4</span>
+                                        </div>
+                                        <h4 class="card-title h5">Alert System</h4>
+                                        <p class="card-text">Immediate notifications and logging of detected threats</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section with rounded style -->
+    <div class="cta-section bg-primary text-white py-5 rounded-3 my-4">
+        <div class="container text-center">
+            <h2 class="mb-4">Ready to enhance your security?</h2>
+            <p class="lead mb-4">Get started with our advanced weapon detection system today</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="{% url 'live_detection' %}" class="btn btn-light btn-lg rounded-pill">Start Live Detection</a>
+                <a href="{% url 'register' %}" class="btn btn-outline-light btn-lg rounded-pill">Create Account</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer with subtle rounding -->
+    <footer class="footer bg-dark text-white py-5 rounded-top-3 mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>Weapon Detection System</h5>
+                    <p>Advanced AI-powered detection for enhanced security and safety</p>
+                </div>
+                <div class="col-lg-2 mb-4 mb-lg-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="{% url 'home' %}" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="{% url 'live_detection' %}" class="text-white text-decoration-none">Live Detection</a></li>
+                        <li class="mb-2"><a href="{% url 'image_upload' %}" class="text-white text-decoration-none">Image Upload</a></li>
+                        <li class="mb-2"><a href="{% url 'detection_history' %}" class="text-white text-decoration-none">History</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="https://github.com/your-username/weapon-detection" class="text-white text-decoration-none" target="_blank">GitHub Repository</a></li>
+                        <li class="mb-2"><a href="https://github.com/your-username/weapon-detection/wiki" class="text-white text-decoration-none" target="_blank">Documentation</a></li>
+                        <li class="mb-2"><a href="https://github.com/your-username/weapon-detection/issues" class="text-white text-decoration-none" target="_blank">Report Issues</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>App Components</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="https://github.com/your-username/weapon-detection/tree/main/detection_model" class="text-white text-decoration-none" target="_blank">Detection Model</a></li>
+                        <li class="mb-2"><a href="https://github.com/your-username/weapon-detection/tree/main/web_interface" class="text-white text-decoration-none" target="_blank">Web Interface</a></li>
+                        <li class="mb-2"><a href="https://github.com/your-username/weapon-detection/tree/main/api" class="text-white text-decoration-none" target="_blank">API Services</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; {% now "Y" %} Weapon Detection System. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white me-3"><i class="fab fa-github fa-lg"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock content %}

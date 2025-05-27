@@ -1,0 +1,27 @@
+<!-- core/templates/core/image_upload.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center">Upload Image for Detection</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_image" class="form-label">Choose an image to upload:</label>
+                        <input type="file" name="image" class="form-control" id="id_image" accept="image/*" required>
+                        <div class="form-text">Images will be analyzed for weapon detection.</div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Upload & Analyze</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

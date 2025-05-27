@@ -1,0 +1,37 @@
+<!-- core/templates/core/live_detection.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center">Live Weapon Detection</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8 mx-auto text-center">
+                        <div class="ratio ratio-16x9 mb-3">
+                            <img src="{% url 'video_feed' %}" class="img-fluid border" alt="Live feed">
+                        </div>
+                        <div class="alert alert-info" id="detectionStatus">
+                            No weapons detected
+                        </div>
+                        <div class="d-grid gap-2 col-md-6 mx-auto">
+                            <a href="{% url 'detection_history' %}" class="btn btn-primary">View Detection History</a>
+                            <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // In a production app, you would implement WebSocket or polling
+    // to update the detection status in real-time
+    console.log('Live detection page loaded');
+});
+</script>
+{% endblock content %}

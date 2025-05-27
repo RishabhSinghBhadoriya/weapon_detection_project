@@ -1,0 +1,57 @@
+<!-- core/templates/core/upload_history.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center">Your Upload History</h2>
+            </div>
+            <div class="card-body">
+                {% if uploads %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Filename</th>
+                                    <th>Upload Date</th>
+                                    <th>Detection</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for upload in uploads %}
+                                <tr>
+                                    <td>
+                                        <img src="{{ upload.image.url }}" alt="Thumbnail" style="width: 100px; height: auto;">
+                                    </td>
+                                    <td>{{ upload.original_filename }}</td>
+                                    <td>{{ upload.uploaded_at|date:"M d, Y H:i" }}</td>
+                                    <td>
+                                        {% if upload.has_weapon %}
+                                            <span class="badge bg-danger">Weapon Detected ({{ upload.confidence|floatformat:2 }})</span>
+                                        {% else %}
+                                            <span class="badge bg-success">No Weapons</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'image_detail' upload.id %}" class="btn btn-sm btn-info">View Details</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">You haven't uploaded any images yet.</div>
+                {% endif %}
+                <div class="d-grid gap-2 col-md-6 mx-auto mt-3">
+                    <a href="{% url 'image_upload' %}" class="btn btn-primary">Upload New Image</a>
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

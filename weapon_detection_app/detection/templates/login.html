@@ -1,0 +1,52 @@
+<!-- detection/templates/detection/login.html -->
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="text-center">Login</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% if form.errors or error_message %}
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Error!</strong>
+                            {% if error_message %}
+                                <p class="mb-0">{{ error_message }}</p>
+                            {% endif %}
+                            {% if form.errors %}
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        <p class="mb-0">{{ error }}</p>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endif %}
+                            {% if form.non_field_errors %}
+                                {% for error in form.non_field_errors %}
+                                    <p class="mb-0">{{ error }}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_username" class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control" id="id_username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_password" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" id="id_password" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <small>Need an Account? <a href="{% url 'register' %}">Sign Up Now</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

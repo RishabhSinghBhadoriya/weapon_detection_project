@@ -1,0 +1,36 @@
+<!-- core/templates/core/detection_history.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center">Detection History</h2>
+            </div>
+            <div class="card-body">
+                {% if detections %}
+                    <div class="row">
+                        {% for detection in detections %}
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    {% cloudinary detection.image class="card-img-top" %}
+                                    <div class="card-body">
+                                        <h5 class="card-title">Confidence: {{ detection.confidence|floatformat:2 }}</h5>
+                                        <p class="card-text">{{ detection.timestamp|date:"F d, Y H:i:s" }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">No detections have been recorded yet.</div>
+                {% endif %}
+                <div class="text-center mt-3">
+                    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
