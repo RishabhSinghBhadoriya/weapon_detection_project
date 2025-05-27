@@ -1,1 +1,1 @@
-web: python run_migrations.py && gunicorn weapon_detection_app.wsgi
+web: gunicorn weapon_detection_app.wsgi
